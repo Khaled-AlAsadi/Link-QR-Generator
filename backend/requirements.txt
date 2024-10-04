@@ -3,3 +3,5 @@ qrcode[pil]
 pillow
 gunicorn
 validators
+pythonping
+flask-cors

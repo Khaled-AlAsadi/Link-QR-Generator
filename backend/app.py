@@ -4,8 +4,12 @@ import io
 import base64
 from PIL import Image
 import validators
+from pythonping import ping
+import os
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 @app.route('/generate', methods=['POST'])
@@ -29,6 +33,11 @@ def generate_qr():
 
     # Return the base64 encoded QR image
     return jsonify({'code': img_base64})
+
+
+@app.route('/', methods=['GET'])
+def home():
+    return "App is running!", 200
 
 
 if __name__ == '__main__':
