@@ -1,4 +1,5 @@
 import { ReactNode } from 'react'
+import styled from 'styled-components'
 
 interface Props {
   children: ReactNode
@@ -12,8 +13,20 @@ export const ButtonComponent: React.FC<Props> = ({
   type,
 }) => {
   return (
-    <button type={type} onClick={onClick}>
+    <StyledButton type={type} onClick={onClick}>
       {children}
-    </button>
+    </StyledButton>
   )
 }
+
+const StyledButton = styled.button`
+  background-color: #ec4186;
+  color: #fff;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  &:hover {
+    background-color: #ee544a;
+`

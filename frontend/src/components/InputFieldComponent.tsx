@@ -24,9 +24,10 @@ export const InputFieldComponent: React.FC<Props> = ({
 }
 
 const StyledTextInput = styled.input`
+  padding: 1rem;
+  border: 2px solid #ec4186;
+  border-radius: 12px;
   width: 100%;
-  height: 40px;
-  border: 1px solid;
-  border-radius: 5px;
-  padding: 8px;
+  max-width: 400px;
+  font-size: 1.1rem;
 `

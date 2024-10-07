@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import api from './service/api'
 import styled from 'styled-components'
+import FooterComponent from './components/FooterComponent'
+import HeaderComponent from './components/HeaderComponent'
 import { InputFieldComponent } from './components/InputFieldComponent'
 import { ButtonComponent } from './components/ButtonComponent'
 
@@ -39,29 +41,51 @@ function App() {
 
   return (
     <StyledContainer>
-      <InputFieldComponent
-        onChange={handleChange}
-        value={searchTerm}
-        placeholder="Link"
-        type="text"
-      />
-      <ButtonComponent onClick={handleSubmit} type={'submit'}>
-        Generate QR
-      </ButtonComponent>
-      {qrCode && (
-        <div>
-          <h3>Your QR Code:</h3>
-          <img src={`data:image/png;base64,${qrCode}`} alt="QR Code" />
-        </div>
-      )}
+      <HeaderComponent />
+
+      <StyledSection>
+        <InputFieldComponent
+          onChange={handleChange}
+          value={searchTerm}
+          placeholder="Enter Link"
+          type="text"
+        />
+        <ButtonComponent onClick={handleSubmit} type="submit">
+          Generate QR
+        </ButtonComponent>
+        {qrCode && (
+          <QRCodeContainer>
+            <img src={`data:image/png;base64,${qrCode}`} alt="QR Code" />
+          </QRCodeContainer>
+        )}
+      </StyledSection>
+      <FooterComponent />
     </StyledContainer>
   )
 }
-const StyledContainer = styled.div`
+
+const StyledContainer = styled.div``
+
+const StyledSection = styled.section`
+  flex-grow: 1;
   display: flex;
-  justify-content: center;
   flex-direction: column;
-  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 2rem;
+  background-color: #ffffff;
+  color: #38124a;
+  border: 10px red dotted;
+`
+
+const QRCodeContainer = styled.div`
+  margin-top: 1.5rem;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 12px;
+  border: 2px solid #ee544a;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 `
 
 export default App
