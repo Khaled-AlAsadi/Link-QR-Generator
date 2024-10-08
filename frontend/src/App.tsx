@@ -5,10 +5,12 @@ import FooterComponent from './components/FooterComponent'
 import HeaderComponent from './components/HeaderComponent'
 import { InputFieldComponent } from './components/InputFieldComponent'
 import { ButtonComponent } from './components/ButtonComponent'
+import Collapsible from './components/CollapsibleComponent'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [qrCode, setQrCode] = useState<any>()
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
 
   useEffect(() => {
     const ping = async () => {
@@ -39,10 +41,39 @@ function App() {
     }
   }
 
+  const handleToggle = (index: number) => {
+    console.log(index)
+    setOpenIndex((prevIndex) => (prevIndex === index ? null : index))
+  }
+
   return (
     <StyledContainer>
       <HeaderComponent />
 
+      <StyledSection>
+        <Collapsible
+          open={openIndex === 0}
+          title="What is a QR Code?"
+          onToggle={() => handleToggle(0)}
+        >
+          A QR (Quick Response) code is a type of two-dimensional barcode that
+          can be scanned by smartphones and other devices to quickly access
+          information. Unlike traditional barcodes, QR codes can store much more
+          data and can be scanned from any direction, making them faster and
+          easier to use.
+        </Collapsible>
+        <Collapsible
+          title="What is a QR Code?"
+          open={openIndex === 1}
+          onToggle={() => handleToggle(1)}
+        >
+          A QR (Quick Response) code is a type of two-dimensional barcode that
+          can be scanned by smartphones and other devices to quickly access
+          information. Unlike traditional barcodes, QR codes can store much more
+          data and can be scanned from any direction, making them faster and
+          easier to use.
+        </Collapsible>
+      </StyledSection>
       <StyledSection>
         <InputFieldComponent
           onChange={handleChange}
@@ -70,13 +101,12 @@ const StyledSection = styled.section`
   flex-grow: 1;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
   gap: 1.5rem;
   padding: 2rem;
   background-color: #ffffff;
   color: #38124a;
   border: 10px red dotted;
+  margin: 1rem;
 `
 
 const QRCodeContainer = styled.div`
