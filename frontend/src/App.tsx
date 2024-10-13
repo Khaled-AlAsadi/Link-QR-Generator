@@ -144,10 +144,10 @@ const Item1 = styled.div`
 
 const StyledImg = styled.img`
   width: 100%;
-  max-width: 400px; // Cap the image width to a maximum size
-  height: auto; // Maintain the aspect ratio
-  object-fit: contain; // Ensure the image scales without distorting
-  margin: 0 auto; // Center the image in the container
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+  margin: 0 auto;
 `
 
 const Item2 = styled.div`
