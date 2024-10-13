@@ -20,12 +20,13 @@ export const ButtonComponent: React.FC<Props> = ({
 }
 
 const StyledButton = styled.button`
-  background-color: #ec4186;
-  color: #fff;
+  background-color: #EC4186;
+  color: #FFFFFF;
+  border-radius: 4px;
+  padding: 10px 20px;
   padding: 1rem 2rem;
-  border: none;
-  border-radius: 12px;
   cursor: pointer;
+  width:100%;
   font-size: 1.1rem;
   &:hover {
     background-color: #ee544a;

@@ -28,6 +28,7 @@ const StyledTextInput = styled.input`
   border: 2px solid #ec4186;
   border-radius: 12px;
   width: 100%;
-  max-width: 400px;
+  max-width: 100%;
   font-size: 1.1rem;
+  box-sizing: border-box;
 `

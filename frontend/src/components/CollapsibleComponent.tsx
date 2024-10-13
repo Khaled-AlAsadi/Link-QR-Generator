@@ -14,18 +14,27 @@ const Collapsible: React.FC<IProps> = ({ open, children, title, onToggle }) => {
     <StyledCard>
       <Header onClick={onToggle}>
         <Title>{title}</Title>
-        <ToggleButton>{!open ? <SlArrowDown /> : <SlArrowUp />}</ToggleButton>
+        <ToggleButton>
+          {!open ? (
+            <SlArrowDown color="#ffffff" />
+          ) : (
+            <SlArrowUp color="#ffffff" />
+          )}
+        </ToggleButton>
       </Header>
       {open && <Content>{children}</Content>}
     </StyledCard>
   )
 }
 const StyledCard = styled.div`
-  background-color: #f8f9fa;
-  border: 1px solid #e0e0e0;
+  background-color: #1e1e1e;
+  color: #ffffff;
+  border: 1px solid #ec4186;
   border-radius: 8px;
   transition: max-height 0.3s ease;
   overflow: hidden;
+  color: #ffffff;
+  margin: 0 0 15px 0;
 `
 
 const Header = styled.div`
@@ -33,7 +42,6 @@ const Header = styled.div`
   justify-content: space-between;
   align-items: center;
   padding: 1rem;
-  background-color: #ffffff;
   border-bottom: 1px solid #e0e0e0;
   cursor: pointer;
 `
@@ -52,6 +60,5 @@ const ToggleButton = styled.button`
 
 const Content = styled.div`
   padding: 1rem;
-  background-color: #ffffff;
 `
 export default Collapsible
