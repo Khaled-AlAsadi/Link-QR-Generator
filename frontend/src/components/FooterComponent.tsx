@@ -29,12 +29,9 @@ function FooterComponent() {
 const Footer = styled.footer`
   background-color: #333;
   color: white;
-  text-align: center;
   width: 100%;
-  box-shadow: 0px -2px 5px rgba(0, 0, 0, 0.2);
   padding: 1rem 0;
-  flex: 1;
-  margin: auto 0;
+  margin-top: auto;
 `
 const Container = styled.div`
   display: flex;

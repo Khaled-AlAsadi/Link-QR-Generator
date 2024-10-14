@@ -111,6 +111,7 @@ const StyledContainer = styled.div`
   align-items: center;
   width: 100%;
   gap: 2rem;
+  min-height: 100vh;
 `
 
 const StyledSection = styled.section`
