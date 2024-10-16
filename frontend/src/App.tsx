@@ -6,6 +6,7 @@ import HeaderComponent from './components/HeaderComponent'
 import { InputFieldComponent } from './components/InputFieldComponent'
 import { ButtonComponent } from './components/ButtonComponent'
 import Collapsible from './components/CollapsibleComponent'
+import myImage from './assets/LinkedInQr.png'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -52,7 +53,7 @@ function App() {
 
       <StyledSection>
         <Item1>
-          <StyledImg src="./assets/LinkedInQr.png" />
+          <StyledImg src={myImage} alt="QR-Code for linkedIn Profile" />
         </Item1>
         <Item2>
           <Collapsible
