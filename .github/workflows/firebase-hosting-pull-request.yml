@@ -36,5 +36,6 @@ jobs:
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_LINK_QR_GENERATOR }}
+          channelId: live
           projectId: link-qr-generator
           entryPoint: frontend
