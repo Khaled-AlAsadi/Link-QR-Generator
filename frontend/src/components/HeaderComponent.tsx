@@ -15,6 +15,7 @@ const NavbarContainer = styled.nav`
   color: white;
   padding: 1rem;
   display: flex;
+  width: 100%;
   justify-content: space-between;
   align-items: center;
   @media (max-width: 768px) {
@@ -38,6 +39,7 @@ const Header = styled.header`
 const StyledTitle = styled.h1`
   font-size: 1.5rem;
   font-family: 'Sans Serif';
+  padding: 8px;
 `
 
 export default HeaderComponent

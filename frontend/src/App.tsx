@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import api from './service/api'
 import styled from 'styled-components'
 import FooterComponent from './components/FooterComponent'
-// import HeaderComponent from './components/HeaderComponent'
+import HeaderComponent from './components/HeaderComponent'
 import { InputFieldComponent } from './components/InputFieldComponent'
 import { ButtonComponent } from './components/ButtonComponent'
 import Collapsible from './components/CollapsibleComponent'
@@ -48,7 +48,7 @@ function App() {
 
   return (
     <StyledContainer>
-      {/* <HeaderComponent /> */}
+      <HeaderComponent />
 
       <StyledSection>
         <Item1>
