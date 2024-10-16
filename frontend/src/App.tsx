@@ -52,7 +52,7 @@ function App() {
 
       <StyledSection>
         <Item1>
-          <StyledImg src="../src/assets/LinkedInQr.png" />
+          <StyledImg src="./assets/LinkedInQr.png" />
         </Item1>
         <Item2>
           <Collapsible
