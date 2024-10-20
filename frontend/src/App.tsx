@@ -48,73 +48,78 @@ function App() {
   }
 
   return (
-    <StyledContainer>
+    <>
       <HeaderComponent />
+      <StyledMain>
+        <StyledSection>
+          <Item1>
+            <StyledImg src={myImage} alt="QR-Code for linkedIn Profile" />
+          </Item1>
+          <Item2>
+            <Collapsible
+              open={openIndex === 0}
+              title="What is a QR Code?"
+              onToggle={() => handleToggle(0)}
+            >
+              A QR (Quick Response) code is a type of two-dimensional barcode
+              that can be scanned by smartphones and other devices to quickly
+              access information. Unlike traditional barcodes, QR codes can
+              store much more data and can be scanned from any direction, making
+              them faster and easier to use.
+            </Collapsible>
+            <Collapsible
+              title="What is a QR Code?"
+              open={openIndex === 1}
+              onToggle={() => handleToggle(1)}
+            >
+              A QR (Quick Response) code is a type of two-dimensional barcode
+              that can be scanned by smartphones and other devices to quickly
+              access information. Unlike traditional barcodes, QR codes can
+              store much more data and can be scanned from any direction, making
+              them faster and easier to use.
+            </Collapsible>
+          </Item2>
+        </StyledSection>
+        <StyledSection>
+          {qrCode ? (
+            <QRCodeContainer>
+              <StyledImg
+                src={`data:image/png;base64,${qrCode}`}
+                alt="QR Code"
+              />
+            </QRCodeContainer>
+          ) : (
+            <EmptyArea />
+          )}
 
-      <StyledSection>
-        <Item1>
-          <StyledImg src={myImage} alt="QR-Code for linkedIn Profile" />
-        </Item1>
-        <Item2>
-          <Collapsible
-            open={openIndex === 0}
-            title="What is a QR Code?"
-            onToggle={() => handleToggle(0)}
-          >
-            A QR (Quick Response) code is a type of two-dimensional barcode that
-            can be scanned by smartphones and other devices to quickly access
-            information. Unlike traditional barcodes, QR codes can store much
-            more data and can be scanned from any direction, making them faster
-            and easier to use.
-          </Collapsible>
-          <Collapsible
-            title="What is a QR Code?"
-            open={openIndex === 1}
-            onToggle={() => handleToggle(1)}
-          >
-            A QR (Quick Response) code is a type of two-dimensional barcode that
-            can be scanned by smartphones and other devices to quickly access
-            information. Unlike traditional barcodes, QR codes can store much
-            more data and can be scanned from any direction, making them faster
-            and easier to use.
-          </Collapsible>
-        </Item2>
-      </StyledSection>
-      <StyledSection>
-        {qrCode ? (
-          <QRCodeContainer>
-            <StyledImg src={`data:image/png;base64,${qrCode}`} alt="QR Code" />
-          </QRCodeContainer>
-        ) : (
-          <EmptyArea />
-        )}
-
-        <Item2>
-          <InputFieldComponent
-            onChange={handleChange}
-            value={searchTerm}
-            placeholder="Enter Link"
-            type="text"
-          />
-          <ButtonComponent onClick={handleSubmit} type="submit">
-            Generate QR
-          </ButtonComponent>
-        </Item2>
-      </StyledSection>
+          <Item2>
+            <InputFieldComponent
+              onChange={handleChange}
+              value={searchTerm}
+              placeholder="Enter Link"
+              type="text"
+            />
+            <ButtonComponent onClick={handleSubmit}>
+              Generate QR
+            </ButtonComponent>
+          </Item2>
+        </StyledSection>
+      </StyledMain>
       <FooterComponent />
-    </StyledContainer>
+    </>
   )
 }
 
-const StyledContainer = styled.div`
+const StyledMain = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 2rem;
-  min-height: 100vh;
+  padding: 0;
+  height: 100dvh;
+  box-sizing: border-box;
+  overflow-x: hidden;
 `
-
 const StyledSection = styled.section`
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -122,7 +127,7 @@ const StyledSection = styled.section`
   gap: 1.5rem;
   padding: 2rem;
   color: #38124a;
-  margin: 1rem;
+  margin: 1rem 0 1rem 0;
   width: 100%;
   box-sizing: border-box;
   justify-content: center;

@@ -4,30 +4,37 @@ import styled from 'styled-components'
 interface Props {
   children: ReactNode
   onClick: (event: any) => void
-  type?: 'submit' | 'reset' | undefined
+  backgroundColor?: string
 }
 
 export const ButtonComponent: React.FC<Props> = ({
   children,
   onClick,
-  type,
+  backgroundColor,
 }) => {
   return (
-    <StyledButton type={type} onClick={onClick}>
+    <StyledButton backgroundColor={backgroundColor} onClick={onClick}>
       {children}
     </StyledButton>
   )
 }
 
-const StyledButton = styled.button`
-  background-color: #EC4186;
-  color: #FFFFFF;
-  border-radius: 4px;
-  padding: 10px 20px;
-  padding: 1rem 2rem;
+const StyledButton = styled.button<{ backgroundColor?: string }>`
+  background-color: ${(props) => props.backgroundColor || '#ec4186'};
+  color: #ffffff;
+  border-radius: 0.25em;
+  padding: 1em 2em;
   cursor: pointer;
-  width:100%;
-  font-size: 1.1rem;
+  max-width: 40rem;
+  width: 100%;
+  margin: 0.5rem 0 0 0;
+  box-sizing: border-box;
+
   &:hover {
-    background-color: #ee544a;
+    background-color: #d1376d;
+  }
+
+  @supports not (max-width: 40rem) {
+    max-width: none;
+  }
 `
