@@ -29,15 +29,27 @@ function FooterComponent() {
 const Footer = styled.footer`
   background-color: #333;
   color: white;
+  padding: 1rem;
+  display: flex;
   width: 100%;
-  padding: 1rem 0;
-  margin-top: auto;
+  justify-content: center;
+  align-items: center;
+  @media (max-width: 768px) {
+    align-items: center;
+    display: block;
+  }
 `
 const Container = styled.div`
   display: flex;
   justify-content: center;
-  gap: 20px;
+  align-items: center;
+  gap: 1rem;
+  @media (max-width: 768px) {
+    align-items: center;
+    gap: 0.5rem;
+  }
 `
+
 const StyledLink = styled.a`
   color: white;
   text-decoration: none;
@@ -49,8 +61,6 @@ const StyledLink = styled.a`
   &:hover {
     color: #e1e1e1;
     background-color: #444;
-    border-radius: 50%;
-    padding: 10px;
   }
 `
 export default FooterComponent
