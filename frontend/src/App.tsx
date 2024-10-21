@@ -7,6 +7,7 @@ import { InputFieldComponent } from './components/InputFieldComponent'
 import { ButtonComponent } from './components/ButtonComponent'
 import Collapsible from './components/CollapsibleComponent'
 import myImage from './assets/LinkedInQr.png'
+import { LoadingSpinner } from './components/LoadingSpinner'
 
 function App() {
   const [searchTerm, setSearchTerm] = useState('')
@@ -57,9 +58,12 @@ function App() {
       <HeaderComponent />
       <StyledMain>
         {isRequestLoading ? (
-          <StyledContainer>
-            <StyledTitle>Api is spinning up, please wait...</StyledTitle>{' '}
-          </StyledContainer>
+          <StyledBox>
+            <StyledLoadingContainer>
+              <StyledTitle>Api is spinning up, please wait...</StyledTitle>
+              <LoadingSpinner aria-hidden="true" />
+            </StyledLoadingContainer>
+          </StyledBox>
         ) : (
           <>
             <StyledSection>
@@ -80,14 +84,14 @@ function App() {
                 </Collapsible>
                 <Collapsible
                   open={openIndex === 1}
-                  title="What is a QR Code?"
+                  title="What are the benefits of using QR Codes?"
                   onToggle={() => handleToggle(1)}
                 >
-                  A QR (Quick Response) code is a type of two-dimensional
-                  barcode that can be scanned by smartphones and other devices
-                  to quickly access information. Unlike traditional barcodes, QR
-                  codes can store much more data and can be scanned from any
-                  direction, making them faster and easier to use.
+                  They are gaining popularity because of their versatility. You
+                  can use them to gather feedback to improve your products or
+                  services, increase customer engagement with images or videos,
+                  or even promote your business via events and coupons. All of
+                  these can be done with just a single scan!
                 </Collapsible>
               </Item2>
             </StyledSection>
@@ -133,10 +137,9 @@ const StyledMain = styled.main`
   width: 100%;
   padding: 0;
   box-sizing: border-box;
-  overflow-y: auto;
   overflow-x: hidden;
   gap: 1rem;
-  height: 100%;
+  height: auto;
 `
 
 const StyledSection = styled.section`
@@ -150,7 +153,6 @@ const StyledSection = styled.section`
   box-sizing: border-box;
   justify-content: center;
   border: 1px solid #ec4186;
-  overflow: auto;
 `
 
 const QRCodeContainer = styled.div`
@@ -192,10 +194,16 @@ const EmptyArea = styled.div`
 
 const StyledTitle = styled.h2`
   color: #fff;
+  font-size: 18px;
 `
 
-const StyledContainer = styled.h2`
-  display: flex;
-  height: 100vh;
+const StyledBox = styled.section`
+  height: 100dvh;
+`
+
+const StyledLoadingContainer = styled.section`
+  align-items: center;
+  display: inline-flex;
+  gap: 0.5rem;
 `
 export default App

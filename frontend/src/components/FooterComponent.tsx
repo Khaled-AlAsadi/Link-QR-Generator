@@ -34,10 +34,7 @@ const Footer = styled.footer`
   width: 100%;
   justify-content: center;
   align-items: center;
-  @media (max-width: 768px) {
-    align-items: center;
-    display: block;
-  }
+  position: relative !important;
 `
 const Container = styled.div`
   display: flex;

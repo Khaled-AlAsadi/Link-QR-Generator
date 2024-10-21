@@ -18,22 +18,13 @@ const NavbarContainer = styled.nav`
   width: 100%;
   justify-content: space-between;
   align-items: center;
-  @media (max-width: 768px) {
-    justify-content: space-between;
-    align-items: center;
-    display: block;
-  }
+  position: relative !important;
 `
 
 const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-
-  @media (max-width: 768px) {
-    justify-content: space-between;
-    align-items: center;
-  }
 `
 
 const StyledTitle = styled.h1`
