@@ -133,9 +133,10 @@ const StyledMain = styled.main`
   width: 100%;
   padding: 0;
   box-sizing: border-box;
-  overflow: auto;
+  overflow-y: auto;
+  overflow-x: hidden;
   gap: 1rem;
-  height: 100dvh;
+  height: 100%;
 `
 
 const StyledSection = styled.section`
@@ -145,9 +146,11 @@ const StyledSection = styled.section`
   flex: 1;
   padding: 2rem;
   width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
   justify-content: center;
   border: 1px solid #ec4186;
+  overflow: auto;
 `
 
 const QRCodeContainer = styled.div`
