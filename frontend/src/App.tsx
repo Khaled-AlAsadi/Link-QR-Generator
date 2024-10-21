@@ -57,9 +57,9 @@ function App() {
       <HeaderComponent />
       <StyledMain>
         {isRequestLoading ? (
-          <>
+          <StyledContainer>
             <StyledTitle>Api is spinning up, please wait...</StyledTitle>{' '}
-          </>
+          </StyledContainer>
         ) : (
           <>
             <StyledSection>
@@ -192,5 +192,10 @@ const EmptyArea = styled.div`
 
 const StyledTitle = styled.h2`
   color: #fff;
+`
+
+const StyledContainer = styled.h2`
+  display: flex;
+  height: 100vh;
 `
 export default App
