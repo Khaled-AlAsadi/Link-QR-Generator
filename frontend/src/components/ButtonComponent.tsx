@@ -25,16 +25,11 @@ const StyledButton = styled.button<{ backgroundColor?: string }>`
   border-radius: 0.25em;
   padding: 1em 2em;
   cursor: pointer;
-  max-width: 40rem;
   width: 100%;
   margin: 0.5rem 0 0 0;
   box-sizing: border-box;
 
   &:hover {
-    background-color: #d1376d;
-  }
-
-  @supports not (max-width: 40rem) {
-    max-width: none;
+    background-color: #c20f5c;
   }
 `

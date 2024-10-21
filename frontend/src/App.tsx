@@ -12,17 +12,19 @@ function App() {
   const [searchTerm, setSearchTerm] = useState('')
   const [qrCode, setQrCode] = useState<any>()
   const [openIndex, setOpenIndex] = useState<number | null>(null)
-
+  const [isRequestLoading, setIsRequestLoading] = useState<boolean>(false)
   useEffect(() => {
     const ping = async () => {
+      setIsRequestLoading(true)
       try {
         await api.get('/')
+        setIsRequestLoading(false)
       } catch (error) {
         console.error(error)
       }
     }
     ping()
-  })
+  }, [])
 
   const handleChange = (event: any) => {
     setSearchTerm(event.target.value)
@@ -35,75 +37,89 @@ function App() {
     const regex = new RegExp(expression)
     if (searchTerm.match(regex)) {
       const req = await api.post('/generate', { link: searchTerm })
-
       setQrCode(req.data.code)
-    } else {
-      alert('No match')
     }
   }
 
   const handleToggle = (index: number) => {
-    console.log(index)
     setOpenIndex((prevIndex) => (prevIndex === index ? null : index))
+  }
+
+  const onDownloadClick = () => {
+    const link = document.createElement('a')
+    link.href = `data:image/png;base64,${qrCode}`
+    link.download = 'QRCode.png'
+    link.click()
   }
 
   return (
     <>
       <HeaderComponent />
       <StyledMain>
-        <StyledSection>
-          <Item1>
-            <StyledImg src={myImage} alt="QR-Code for linkedIn Profile" />
-          </Item1>
-          <Item2>
-            <Collapsible
-              open={openIndex === 0}
-              title="What is a QR Code?"
-              onToggle={() => handleToggle(0)}
-            >
-              A QR (Quick Response) code is a type of two-dimensional barcode
-              that can be scanned by smartphones and other devices to quickly
-              access information. Unlike traditional barcodes, QR codes can
-              store much more data and can be scanned from any direction, making
-              them faster and easier to use.
-            </Collapsible>
-            <Collapsible
-              title="What is a QR Code?"
-              open={openIndex === 1}
-              onToggle={() => handleToggle(1)}
-            >
-              A QR (Quick Response) code is a type of two-dimensional barcode
-              that can be scanned by smartphones and other devices to quickly
-              access information. Unlike traditional barcodes, QR codes can
-              store much more data and can be scanned from any direction, making
-              them faster and easier to use.
-            </Collapsible>
-          </Item2>
-        </StyledSection>
-        <StyledSection>
-          {qrCode ? (
-            <QRCodeContainer>
-              <StyledImg
-                src={`data:image/png;base64,${qrCode}`}
-                alt="QR Code"
-              />
-            </QRCodeContainer>
-          ) : (
-            <EmptyArea />
-          )}
+        {isRequestLoading ? (
+          <>
+            <StyledTitle>Api is spinning up, please wait...</StyledTitle>{' '}
+          </>
+        ) : (
+          <>
+            <StyledSection>
+              <Item1>
+                <StyledImg src={myImage} alt="QR-Code for linkedIn Profile" />
+              </Item1>
+              <Item2>
+                <Collapsible
+                  open={openIndex === 0}
+                  title="What is a QR Code?"
+                  onToggle={() => handleToggle(0)}
+                >
+                  A QR (Quick Response) code is a type of two-dimensional
+                  barcode that can be scanned by smartphones and other devices
+                  to quickly access information. Unlike traditional barcodes, QR
+                  codes can store much more data and can be scanned from any
+                  direction, making them faster and easier to use.
+                </Collapsible>
+                <Collapsible
+                  open={openIndex === 1}
+                  title="What is a QR Code?"
+                  onToggle={() => handleToggle(1)}
+                >
+                  A QR (Quick Response) code is a type of two-dimensional
+                  barcode that can be scanned by smartphones and other devices
+                  to quickly access information. Unlike traditional barcodes, QR
+                  codes can store much more data and can be scanned from any
+                  direction, making them faster and easier to use.
+                </Collapsible>
+              </Item2>
+            </StyledSection>
+            <StyledSection>
+              {qrCode ? (
+                <QRCodeContainer>
+                  <StyledImg
+                    src={`data:image/png;base64,${qrCode}`}
+                    alt="QR Code"
+                  />
+                  <ButtonComponent onClick={onDownloadClick}>
+                    Download QR Code
+                  </ButtonComponent>
+                </QRCodeContainer>
+              ) : (
+                <EmptyArea />
+              )}
 
-          <Item2>
-            <InputFieldComponent
-              onChange={handleChange}
-              value={searchTerm}
-              placeholder="Enter Link"
-              type="text"
-            />
-            <ButtonComponent onClick={handleSubmit}>
-              Generate QR
-            </ButtonComponent>
-          </Item2>
-        </StyledSection>
+              <Item2>
+                <InputFieldComponent
+                  onChange={handleChange}
+                  value={searchTerm}
+                  placeholder="Enter Link"
+                  type="text"
+                />
+                <ButtonComponent onClick={handleSubmit}>
+                  Generate QR
+                </ButtonComponent>
+              </Item2>
+            </StyledSection>
+          </>
+        )}
       </StyledMain>
       <FooterComponent />
     </>
@@ -116,33 +132,33 @@ const StyledMain = styled.main`
   align-items: center;
   width: 100%;
   padding: 0;
-  height: 100dvh;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: auto;
+  gap: 1rem;
+  height: 100dvh;
 `
+
 const StyledSection = styled.section`
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-areas: 'a b';
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 1.5rem;
+  flex: 1;
   padding: 2rem;
-  color: #38124a;
-  margin: 1rem 0 1rem 0;
   width: 100%;
   box-sizing: border-box;
   justify-content: center;
+  border: 1px solid #ec4186;
 `
 
 const QRCodeContainer = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  grid-area: a;
+  flex-direction: column;
   width: 100%;
 `
 
 const Item1 = styled.div`
-  grid-area: a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -151,14 +167,13 @@ const Item1 = styled.div`
 
 const StyledImg = styled.img`
   width: 100%;
-  max-width: 400px;
+  max-width: 80%;
   height: auto;
   object-fit: contain;
   margin: 0 auto;
 `
 
 const Item2 = styled.div`
-  grid-area: b;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -166,10 +181,13 @@ const Item2 = styled.div`
 `
 
 const EmptyArea = styled.div`
-  grid-area: a;
   display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
+`
+
+const StyledTitle = styled.h2`
+  color: #fff;
 `
 export default App
