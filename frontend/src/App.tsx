@@ -61,7 +61,7 @@ function App() {
           <StyledBox>
             <StyledLoadingContainer>
               <StyledTitle>
-                Api is spinning up, Might take up to 40 seconds. please wait...
+                Api is spinning up, Might take up to 60 seconds. please wait...
               </StyledTitle>
               <LoadingSpinner aria-hidden="true" />
             </StyledLoadingContainer>
