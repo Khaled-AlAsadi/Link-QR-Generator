@@ -60,7 +60,9 @@ function App() {
         {isRequestLoading ? (
           <StyledBox>
             <StyledLoadingContainer>
-              <StyledTitle>Api is spinning up, please wait...</StyledTitle>
+              <StyledTitle>
+                Api is spinning up, Might take up to 40 seconds. please wait...
+              </StyledTitle>
               <LoadingSpinner aria-hidden="true" />
             </StyledLoadingContainer>
           </StyledBox>
