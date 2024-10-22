@@ -27,14 +27,14 @@ function FooterComponent() {
 }
 
 const Footer = styled.footer`
-  background-color: #333;
-  color: white;
-  padding: 1rem;
-  display: flex;
   width: 100%;
+  height: 100px;
+  background-color: #333;
+  display: flex;
   justify-content: center;
   align-items: center;
-  position: relative !important;
+  position: relative;
+  margin-top: auto;
 `
 const Container = styled.div`
   display: flex;

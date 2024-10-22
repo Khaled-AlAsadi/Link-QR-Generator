@@ -139,7 +139,9 @@ const StyledMain = styled.main`
   box-sizing: border-box;
   overflow-x: hidden;
   gap: 1rem;
-  height: auto;
+  min-height: calc(100vh - 100px);
+  background-color: #1e1e1e;
+  flex-grow: 1;
 `
 
 const StyledSection = styled.section`
@@ -198,7 +200,7 @@ const StyledTitle = styled.h2`
 `
 
 const StyledBox = styled.section`
-  height: 100dvh;
+  min-height: calc(100vh - 100px);
 `
 
 const StyledLoadingContainer = styled.section`
