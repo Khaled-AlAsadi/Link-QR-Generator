@@ -140,7 +140,7 @@ const StyledMain = styled.main`
   overflow-x: hidden;
   gap: 1rem;
   min-height: calc(100vh - 100px);
-  background-color: #1e1e1e;
+  background-color: #20201f;
   flex-grow: 1;
 `
 
@@ -154,7 +154,7 @@ const StyledSection = styled.section`
   max-width: 100%;
   box-sizing: border-box;
   justify-content: center;
-  border: 1px solid #ec4186;
+  border: 1px solid #424242;
 `
 
 const QRCodeContainer = styled.div`
