@@ -56,9 +56,9 @@ function App() {
   return (
     <>
       <HeaderComponent />
-      <StyledMain>
+      <StyledMain role="main">
         {isRequestLoading ? (
-          <StyledBox>
+          <StyledBox aria-live="polite">
             <StyledLoadingContainer>
               <StyledTitle>
                 Api is spinning up, Might take up to 60 seconds. please wait...
@@ -70,13 +70,17 @@ function App() {
           <>
             <StyledSection>
               <Item1>
-                <StyledImg src={myImage} alt="QR-Code for linkedIn Profile" />
+                <StyledImg
+                  src={myImage}
+                  alt="QR-Code Image for linkedIn Profile"
+                />
               </Item1>
               <Item2>
                 <Collapsible
                   open={openIndex === 0}
                   title="What is a QR Code?"
                   onToggle={() => handleToggle(0)}
+                  aria-expanded={openIndex === 0}
                 >
                   A QR (Quick Response) code is a type of two-dimensional
                   barcode that can be scanned by smartphones and other devices
@@ -88,6 +92,7 @@ function App() {
                   open={openIndex === 1}
                   title="What are the benefits of using QR Codes?"
                   onToggle={() => handleToggle(1)}
+                  aria-expanded={openIndex === 1}
                 >
                   They are gaining popularity because of their versatility. You
                   can use them to gather feedback to improve your products or
@@ -109,18 +114,18 @@ function App() {
                   </ButtonComponent>
                 </QRCodeContainer>
               ) : (
-                <EmptyArea />
+                <EmptyArea aria-hidden={true} />
               )}
 
               <Item2>
                 <InputFieldComponent
                   onChange={handleChange}
                   value={searchTerm}
-                  placeholder="Enter Link"
+                  placeholder="Enter Link "
                   type="text"
                 />
                 <ButtonComponent onClick={handleSubmit}>
-                  Generate QR
+                  Generate QR Code for entered link
                 </ButtonComponent>
               </Item2>
             </StyledSection>
