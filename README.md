@@ -70,10 +70,6 @@ The main colors used in the application.
 
 ![Main image](documentaion/design/color_scheme.png)
 
-### Wireframes
-
----
-
 ## Testing
 
 Please refer to the [TESTING.md](TESTING.md) file for all test-related documentation.
