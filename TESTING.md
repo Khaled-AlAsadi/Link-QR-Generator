@@ -1,5 +1,9 @@
 ## Validation
 
+### PEP8 Validation:
+
+- No errors or warnings were found when passing through the official [PEP8](https://pep8ci.herokuapp.com/#) validator.
+
 ### HTML Validation:
 
 - No errors or warnings were found when passing through the official [W3C](https://validator.w3.org/) validator. This validation was done by URI.
