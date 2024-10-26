@@ -11,7 +11,7 @@ function FooterComponent() {
           rel="noopener noreferrer"
           aria-label="View GitHub profile"
         >
-          <FaGithub />
+          <FaGithub aria-hidden="true" />
         </StyledLink>
         <StyledLink
           href="https://www.linkedin.com/in/khaled-al-asadi-a0a169193/"
@@ -19,7 +19,7 @@ function FooterComponent() {
           rel="noopener noreferrer"
           aria-label="View LinkedIn profile"
         >
-          <FaLinkedin />
+          <FaLinkedin aria-hidden="true" />
         </StyledLink>
       </Container>
     </Footer>

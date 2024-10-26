@@ -19,6 +19,7 @@ export const InputFieldComponent: React.FC<Props> = ({
       value={value}
       placeholder={placeholder}
       type={type}
+      aria-label={placeholder}
     />
   )
 }

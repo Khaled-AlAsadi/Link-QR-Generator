@@ -20,9 +20,11 @@ export const ButtonComponent: React.FC<Props> = ({
 }
 
 const StyledButton = styled.button<{ backgroundColor?: string }>`
-  background-color: ${(props) => props.backgroundColor || '#ec4186'};
-  color: #ffffff;
+  background-color: ${(props) => props.backgroundColor || '#b22c63'};
+  color: #f1f1f1;
   border-radius: 0.25em;
+  border: none;
+  outline: none;
   padding: 1em 2em;
   cursor: pointer;
   width: 100%;

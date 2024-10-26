@@ -77,7 +77,7 @@ function App() {
               </Item1>
               <Item2>
                 <Collapsible
-                  open={openIndex === 0}
+                  isExpanded={openIndex === 0}
                   title="What is a QR Code?"
                   onToggle={() => handleToggle(0)}
                   aria-expanded={openIndex === 0}
@@ -89,7 +89,7 @@ function App() {
                   direction, making them faster and easier to use.
                 </Collapsible>
                 <Collapsible
-                  open={openIndex === 1}
+                  isExpanded={openIndex === 1}
                   title="What are the benefits of using QR Codes?"
                   onToggle={() => handleToggle(1)}
                   aria-expanded={openIndex === 1}
@@ -121,7 +121,7 @@ function App() {
                 <InputFieldComponent
                   onChange={handleChange}
                   value={searchTerm}
-                  placeholder="Enter Link "
+                  placeholder="Enter Link E.X:https://link-qr-generator.web.app/"
                   type="text"
                 />
                 <ButtonComponent onClick={handleSubmit}>

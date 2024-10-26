@@ -3,26 +3,37 @@ import { SlArrowUp, SlArrowDown } from 'react-icons/sl'
 import styled from 'styled-components'
 
 interface IProps {
-  open: boolean
+  isExpanded: boolean
   title: string
   children: ReactNode
   onToggle: () => void
 }
 
-const Collapsible: React.FC<IProps> = ({ open, children, title, onToggle }) => {
+const Collapsible: React.FC<IProps> = ({
+  isExpanded,
+  children,
+  title,
+  onToggle,
+}) => {
   return (
     <StyledCard>
       <Header onClick={onToggle}>
         <Title>{title}</Title>
         <ToggleButton>
-          {!open ? (
-            <SlArrowDown color="#ffffff" />
+          {!isExpanded ? (
+            <SlArrowDown
+              color="#ffffff"
+              aria-label="arrow down button to expand the collapsible"
+            />
           ) : (
-            <SlArrowUp color="#ffffff" />
+            <SlArrowUp
+              color="#ffffff"
+              aria-label="arrow up button to close the collapsible"
+            />
           )}
         </ToggleButton>
       </Header>
-      {open && <Content>{children}</Content>}
+      {isExpanded && <Content>{children}</Content>}
     </StyledCard>
   )
 }
@@ -46,9 +57,10 @@ const Header = styled.div`
   cursor: pointer;
 `
 
-const Title = styled.h6`
+const Title = styled.h2`
   font-weight: bold;
   margin: 0;
+  font-size: 18px;
 `
 
 const ToggleButton = styled.button`
