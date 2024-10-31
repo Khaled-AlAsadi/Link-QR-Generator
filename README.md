@@ -75,3 +75,15 @@ The main colors used in the application.
 Please refer to the [TESTING.md](TESTING.md) file for all test-related documentation.
 
 ---
+
+## Deployment
+
+- The api was deployed to [Render](https://render.com/).
+
+- The app was deployed to [Firebase](https://firebase.google.com/)
+
+- The app can be reached by the [link](https://link-qr-generator.web.app/).
+
+Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment.
+
+---
