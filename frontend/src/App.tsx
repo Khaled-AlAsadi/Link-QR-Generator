@@ -182,7 +182,7 @@ const Item1 = styled.div`
 const StyledImg = styled.img`
   width: 100%;
   max-width: 80%;
-  height: auto;
+  height: 50%;
   object-fit: contain;
   margin: 0 auto;
 `
